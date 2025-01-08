@@ -39,9 +39,11 @@
 
         // Check on page load if the user has clicked the link to OnlyFans
         window.onload = function() {
-            // If the user has clicked the OnlyFans link before
+            // If the user has clicked the OnlyFans link before and has visited again
             if (localStorage.getItem("clickedOnlyFansLink") === "true") {
                 console.log("User is returning after clicking the OnlyFans link. Redirecting...");
+                // Clear the localStorage to prevent continuous redirection
+                localStorage.removeItem("clickedOnlyFansLink");
                 window.location.href = "/chloe/welcome-back.html"; // Redirect to the custom rebound page
             }
         };
