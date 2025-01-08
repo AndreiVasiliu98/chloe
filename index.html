@@ -36,12 +36,12 @@
             event.preventDefault(); // Prevent the default link behavior
 
             // Redirect the user to the welcome-back page first
-            window.location.href = "/chloe/welcome-back.html";
+            window.location.href = "/chloe/welcome-back.html"; 
 
-            // After a short delay (to give time for the redirect), send them to the original OnlyFans link
+            // After a short delay, redirect them to the original OnlyFans link
             setTimeout(function() {
                 window.location.href = event.target.href; // Redirect to the original OnlyFans link
-            }, 500); // Delay the redirect to the OnlyFans link by 500ms
+            }, 1000); // Delay redirect for 1 second
         });
     </script>
 </body>
