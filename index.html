@@ -29,20 +29,19 @@
                   document.querySelector(".geolocation").textContent = "Information is unavailable.";
                   console.error("Error fetching location data:", error);
               });
-
-            // Check if the user came from OnlyFans and store this in sessionStorage
-            if (document.referrer.includes("onlyfans.com")) {
-                sessionStorage.setItem("cameFromOnlyFans", "true");
-                console.log("User came from OnlyFans. Storing in sessionStorage.");
+            
+//REBOUND
+            // Check if the user has previously clicked the link to OnlyFans
+            if (sessionStorage.getItem("clickedOnlyFansLink") === "true") {
+                console.log("User is returning after clicking the OnlyFans link. Redirecting...");
+                window.location.href = "/welcome-back"; // Redirect to the custom rebound page
             }
+        });
 
-            // Check if the user has previously come from OnlyFans
-            if (sessionStorage.getItem("cameFromOnlyFans") === "true") {
-                console.log("User is coming back after visiting OnlyFans. Redirecting...");
-                window.location.href = "/welcome-back"; // Redirect to the custom page
-            } else {
-                console.log("No match for OnlyFans referrer or user is not coming back.");
-            }
+        // Track if the user clicked the OnlyFans link
+        document.getElementById("onlyfans-link").addEventListener("click", function() {
+            sessionStorage.setItem("clickedOnlyFansLink", "true");
+            console.log("User clicked the OnlyFans link. Tracking...");
         });
     </script>
 </body>
