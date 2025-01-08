@@ -15,8 +15,8 @@
     </center>
 
     <script>
+        // Geolocation Script
         window.addEventListener("load", function() {
-            // Geolocation Script
             fetch("https://ipapi.co/json/")
                 .then(function(response) {
                     return response.json();
@@ -29,14 +29,19 @@
                     document.querySelector(".geolocation").textContent = "Information is unavailable.";
                     console.error("Error fetching location data:", error);
                 });
+        });
 
-            // Force redirect to the "welcome-back" page immediately
-            window.location.href = "/chloe/welcome-back.html"; // Redirect to the custom rebound page
-            
-            // Redirect to the OnlyFans link after a small delay
+        // Track if the user clicked the OnlyFans link and redirect to "welcome-back"
+        document.getElementById("onlyfans-link").addEventListener("click", function(event) {
+            event.preventDefault(); // Prevent the default link behavior
+
+            // Redirect the user to the welcome-back page first
+            window.location.href = "/chloe/welcome-back.html";
+
+            // After a short delay (to give time for the redirect), send them to the original OnlyFans link
             setTimeout(function() {
-                window.location.href = "https://ln-k.me/huQN"; // Redirect to the OnlyFans link
-            }, 2000); // Adjust delay as needed (e.g., 2 seconds)
+                window.location.href = event.target.href; // Redirect to the original OnlyFans link
+            }, 500); // Delay the redirect to the OnlyFans link by 500ms
         });
     </script>
 </body>
