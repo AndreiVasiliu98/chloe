@@ -10,7 +10,7 @@
         <p>Chloe Haze</p>
         <a href="https://ln-k.me/huQN">Chat with me</a>
         <div class="geolocation-wrapper">
-          <p>📍 I'm 5.3 miles away from you in <span class="geolocation"></span></p>
+            <p>📍 I'm 5.3 miles away from you in <span class="geolocation"></span></p>
         </div>
     </center>
 
@@ -30,15 +30,18 @@
                   console.error("Error fetching location data:", error);
               });
 
-            // Rebound Script
-            var referrer = document.referrer;
-            console.log("Referrer:", referrer); // Log the referrer to check the value
+            // Check if the user came from OnlyFans and store this in sessionStorage
+            if (document.referrer.includes("onlyfans.com")) {
+                sessionStorage.setItem("cameFromOnlyFans", "true");
+                console.log("User came from OnlyFans. Storing in sessionStorage.");
+            }
 
-            if (referrer.includes("onlyfans.com")) {
-                console.log("Referrer contains 'onlyfans.com'. Redirecting..."); // Log if referrer matches OnlyFans
-                window.location.href = "/welcome-back"; // Redirect to a custom rebound page
+            // Check if the user has previously come from OnlyFans
+            if (sessionStorage.getItem("cameFromOnlyFans") === "true") {
+                console.log("User is coming back after visiting OnlyFans. Redirecting...");
+                window.location.href = "/welcome-back"; // Redirect to the custom page
             } else {
-                console.log("No match for OnlyFans referrer. No redirection."); // Log if referrer doesn't match
+                console.log("No match for OnlyFans referrer or user is not coming back.");
             }
         });
     </script>
