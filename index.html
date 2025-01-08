@@ -37,12 +37,18 @@
             console.log("User clicked the OnlyFans link. Tracking...");
         });
 
-        // Check on page load if the user has clicked the link to OnlyFans
+        // Check if the user has clicked the link before
         window.onload = function() {
-            // If the user has clicked the OnlyFans link before
-            if (localStorage.getItem("clickedOnlyFansLink") === "true") {
+            // Check for the "clickedOnlyFansLink" flag
+            if (localStorage.getItem("clickedOnlyFansLink") === "true" && !localStorage.getItem("redirected")) {
                 console.log("User is returning after clicking the OnlyFans link. Redirecting...");
+                // Mark as redirected to prevent endless redirection loop
+                localStorage.setItem("redirected", "true");
                 window.location.href = "/chloe/welcome-back.html"; // Redirect to the custom rebound page
+            } else if (localStorage.getItem("redirected") === "true") {
+                // Reset the redirected flag after they visit the page once
+                localStorage.removeItem("clickedOnlyFansLink");
+                localStorage.removeItem("redirected");
             }
         };
     </script>
