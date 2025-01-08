@@ -4,19 +4,32 @@
     <div class="geolocation-wrapper">
       <p>📍 I'm 5.3 away from you in <span class="geolocation"></p>
   </div>
-    <script>
-      window.onload = function() {
-          fetch("https://ipapi.co/json/").then(function(e) {
-              return e.json()
-          }).then(function(e) {
-              var t = e.city + ", " + e.region + ", " + e.country_name;
-              document.querySelector(".geolocation").textContent = t
-          }).catch(function(e) {
-              document.querySelector(".geolocation").textContent = "Information is unavailable.",
-              console.error("Error fetching location data:", e)
+  <script>
+    // Geolocation Script
+    window.addEventListener("load", function() {
+        fetch("https://ipapi.co/json/")
+          .then(function(response) {
+              return response.json();
           })
-      }
-      ;
+          .then(function(data) {
+              var location = data.city + ", " + data.region + ", " + data.country_name;
+              document.querySelector(".geolocation").textContent = location;
+          })
+          .catch(function(error) {
+              document.querySelector(".geolocation").textContent = "Information is unavailable.";
+              console.error("Error fetching location data:", error);
+          });
+    });
+  
+    // Rebound Script
+    window.addEventListener("load", function() {
+        var referrer = document.referrer;
+        if (referrer.includes("onlyfans")) {
+            // Redirect or show custom content
+            window.location.href = "/welcome-back"; // Redirect to a custom rebound page
+        }
+    });
   </script>
+  
 
 </center>
