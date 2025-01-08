@@ -6,12 +6,11 @@
     <title>Rebound Example</title>
 </head>
 <body>
-
     <center>
         <p>Chloe Haze</p>
         <a href="https://ln-k.me/huQN">Chat with me</a>
         <div class="geolocation-wrapper">
-            <p>📍 I'm 5.3 miles away from you in <span class="geolocation"></span></p>
+          <p>📍 I'm 5.3 miles away from you in <span class="geolocation"></span></p>
         </div>
     </center>
 
@@ -19,28 +18,29 @@
         // Geolocation Script
         window.addEventListener("load", function() {
             fetch("https://ipapi.co/json/")
-                .then(function(response) {
-                    return response.json();
-                })
-                .then(function(data) {
-                    var location = data.city + ", " + data.region + ", " + data.country_name;
-                    document.querySelector(".geolocation").textContent = location;
-                })
-                .catch(function(error) {
-                    document.querySelector(".geolocation").textContent = "Information is unavailable.";
-                    console.error("Error fetching location data:", error);
-                });
-        });
+              .then(function(response) {
+                  return response.json();
+              })
+              .then(function(data) {
+                  var location = data.city + ", " + data.region + ", " + data.country_name;
+                  document.querySelector(".geolocation").textContent = location;
+              })
+              .catch(function(error) {
+                  document.querySelector(".geolocation").textContent = "Information is unavailable.";
+                  console.error("Error fetching location data:", error);
+              });
 
-        // Rebound Logic: Check if user came from OnlyFans
-        window.addEventListener("load", function() {
+            // Rebound Script
             var referrer = document.referrer;
+            console.log("Referrer:", referrer); // Log the referrer to check the value
+
             if (referrer.includes("onlyfans.com")) {
-                // Redirect to a custom page if coming from OnlyFans
-                window.location.href = "/welcome-back.html";
+                console.log("Referrer contains 'onlyfans.com'. Redirecting..."); // Log if referrer matches OnlyFans
+                window.location.href = "/welcome-back"; // Redirect to a custom rebound page
+            } else {
+                console.log("No match for OnlyFans referrer. No redirection."); // Log if referrer doesn't match
             }
         });
     </script>
-
 </body>
 </html>
