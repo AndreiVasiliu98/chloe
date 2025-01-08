@@ -1,0 +1,16 @@
+<center>
+    <p>Chloe Haze</p>
+    <a href="https://onlyfans.com/chloehaze">Chat with me</a>
+    <div>
+        <p>Within 7.2 miles of <span id="city"></span></p>
+    </div>
+    <script>
+
+        fetch('http://ip-api.com/json/?fields=61439')
+            .then((res) => res.json())
+            .then((res) => {
+                const cityE1 = document.getElementById('city');
+                cityE1.textContent = res.city;
+            })
+    </script>
+</center>
