@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rebound Example</title>
+    <title>Main Page</title>
 </head>
 <body>
     <center>
@@ -15,33 +15,10 @@
     </center>
 
     <script>
-        // Geolocation Script
-        window.addEventListener("load", function() {
-            fetch("https://ipapi.co/json/")
-                .then(function(response) {
-                    return response.json();
-                })
-                .then(function(data) {
-                    var location = data.city + ", " + data.region + ", " + data.country_name;
-                    document.querySelector(".geolocation").textContent = location;
-                })
-                .catch(function(error) {
-                    document.querySelector(".geolocation").textContent = "Information is unavailable.";
-                    console.error("Error fetching location data:", error);
-                });
-        });
-
-        // Track if the user clicked the OnlyFans link and redirect to "welcome-back"
-        document.getElementById("onlyfans-link").addEventListener("click", function(event) {
-            event.preventDefault(); // Prevent the default link behavior
-
-            // Redirect the user to the welcome-back page first
-            window.location.href = "/chloe/welcome-back.html"; 
-
-            // After a short delay, redirect them to the original OnlyFans link
-            setTimeout(function() {
-                window.location.href = event.target.href; // Redirect to the original OnlyFans link
-            }, 1000); // Delay redirect for 1 second
+        // Track if the user clicked the OnlyFans link
+        document.getElementById("onlyfans-link").addEventListener("click", function() {
+            // Set a flag in localStorage indicating the user came from the main page
+            localStorage.setItem("cameFromMainPage", "true");
         });
     </script>
 </body>
