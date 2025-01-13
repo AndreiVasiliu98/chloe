@@ -39,24 +39,32 @@
         console.log("Page loaded normally");
     }
 }
-
-// FIRBASE 
-import { initializeApp } from "firebase/app";
-import { getStorage } from "firebase/storage";
-
-// TODO: Replace the following with your app's Firebase project configuration
-// See: https://firebase.google.com/docs/web/learn-more#config-object
-const firebaseConfig = {
-  // ...
-  storageBucket: 'gs://lander-b3b3b.firebasestorage.app'
-};
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-
-
-// Initialize Cloud Storage and get a reference to the service
-const storage = getStorage(app);
     </script>
+
+    
+    <script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyCVYBdAEq5To3baW4ityQwXCdNjOlR5Gy8",
+    authDomain: "lander-b3b3b.firebaseapp.com",
+    projectId: "lander-b3b3b",
+    storageBucket: "lander-b3b3b.firebasestorage.app",
+    messagingSenderId: "147919675636",
+    appId: "1:147919675636:web:e804407cef22ea5736fea1",
+    measurementId: "G-TDREWHM2WR"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+</script>      
+    
 </body>
 </html>
